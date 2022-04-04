@@ -6,7 +6,8 @@ from django.shortcuts import render
 def home_view(request):
     context = {
         'name': 'Gia Bao',
-        'skills': ['java', 'django']
+        'skills': ['java', 'django'],
+        'content': '<div class="alert alert-primary" role="alert">Hello Django!</div>'
     }
     return render(request, 'home.html', context)
 
