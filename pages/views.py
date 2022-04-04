@@ -4,7 +4,11 @@ from django.shortcuts import render
 
 # Create your views here.
 def home_view(request):
-    return render(request, 'home.html', {'name': 'Gia Bao'})
+    context = {
+        'name': 'Gia Bao',
+        'skills': ['java', 'django']
+    }
+    return render(request, 'home.html', context)
 
 
 def contact_view(request):
