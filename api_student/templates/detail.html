@@ -2,4 +2,6 @@
 
 {% block content %}
     <h1>Hello {{ student.name|capfirst|default:'World' }}!</h1>
+    <p> Code: {{ student.code }}</p>
+    <p> Address: {{ student.address }}</p>
 {% endblock %}
