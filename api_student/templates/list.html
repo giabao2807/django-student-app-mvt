@@ -2,6 +2,6 @@
 
 {% block content %}
     {% for student in students %}
-        <p>{{ student.id }} - {{ student.name }}</p>
+        <p>{{ student.id }} -  <a href="{{ student.get_absolute_url }}" >{{ student.name }}</a> </p>
     {% endfor %}
 {% endblock %}
