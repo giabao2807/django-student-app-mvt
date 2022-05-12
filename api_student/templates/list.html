@@ -1,7 +1,31 @@
 {%  extends 'base.html' %}
 
 {% block content %}
-    {% for student in students %}
-        <p>{{ student.id }} -  <a href="{{ student.get_absolute_url }}" >{{ student.name }}</a> </p>
-    {% endfor %}
+    <table class ="table">
+        <thead>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>
+                <a href="/student/create" class="btn btn-success">Add</a>
+            </th>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td> {{ student.code }}</td>
+                    <td> <a href="{{ student.get_absolute_url }}">{{ student.name }}</a> </td>
+                    <td> {{ student.address }}</td>
+                    <td> {{ student.department }}</td>
+                    <td> {{ student.email }}</td>
+                    <td>
+                        <a href="/student/{{ student.id}}/update" class="btn btn-primary">Update</a>
+                        <a href="/student/{{ student.id }}/delete" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
