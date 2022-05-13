@@ -41,7 +41,7 @@ def create_view(request):
     form = StudentForms(request.POST or None, initial=init_value)
     if form.is_valid():
         form.save()
-        form =StudentForms()
+        form = StudentForms()
 
     context = {
         'form': form
@@ -85,9 +85,13 @@ def delete_view(request, id):
 
 
 def list_view(request):
-    queryset = Student.objects.all()
-
+    keyword = request.GET.get('keyword')
+    if keyword:
+        queryset = Student.objects.filter(name__icontains=keyword)
+    else:
+        queryset = Student.objects.all()
     context = {
+        "keyword": keyword,
         'students': queryset
     }
     return render(request, 'list.html', context)
