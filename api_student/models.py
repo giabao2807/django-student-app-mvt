@@ -18,3 +18,14 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         return reverse("detail", kwargs={"id": self.id})
+
+
+class Course(models.Model):
+    name = models.TextField(max_length=256)
+    limit = models.IntegerField(default=30)
+    startDate = models.DateField()
+    endDate = models.DateField()
+    students = models.ManyToManyField(Student, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name}({self.id})"
